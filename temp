@@ -1,0 +1,16 @@
+    <script>
+        var socket = io();
+        socket.on('redirect', function(destination) {
+            window.location.href = destination;
+        });
+    </script>
+
+io.on('connection', (socket) => {
+    //   console.log('a user connected');
+    //   socket.on('chat message', (msg) => {
+    //     console.log('message: ' + msg);
+    //     io.emit('chat message', msg);
+    //   });
+        let destination = '/bibliDoc#id';
+        io.emit('redirect', destination);
+    });
