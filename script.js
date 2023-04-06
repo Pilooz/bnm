@@ -8,11 +8,13 @@ var queue_url = urlcourante.substring (urlcourante.lastIndexOf( "/" )+1 );
 const url = new URL(window.location.href);
 const searchParams = new URLSearchParams(url.search);
 
-const id = searchParams.get('id');
+const id = url.hash.split("#")[1];
+console.log(url)
 console.log(id)
 
 
-var urlFixe = "https://bnwwkshop.glitch.me/"
+// var urlFixe = "https://bnwwkshop.glitch.me/"
+var urlFixe = "http://localhost:3001/"
 document.getElementById("lien-bq").href = urlFixe + id;
 document.getElementById("lien-hq").href = urlFixe + id;
 
