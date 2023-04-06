@@ -38,10 +38,12 @@
     <a class="buttonPlein" href="./select.html">Page select</a>
 
     <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
       socket.on('redirect', function(destination) {
-          window.location.href = destination;
+          console.log(destination)
+          window.location.href = window.location.href + destination;
       });
   </script>
   </body>

@@ -130,7 +130,7 @@ eventEmitter.on('serial.data.sent', function(dataChunk){
       // Socket to client
       //
       console.log("Url : "+contentURL)
-      io.emit('redirect', "/select/:"+contentURL);
+      io.emit('redirect', "select#"+contentURL);
     }
     tagRFID = ""
   }
