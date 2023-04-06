@@ -26,8 +26,33 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/test.html');
+  res.sendFile(__dirname + '/index.html');
 });
+
+app.get('/bibliDoc', (req, res) => {
+    res.sendFile(__dirname + '/bibliDoc.html')
+})
+
+app.get('/bibliFilm', (req, res) => {
+    res.sendFile(__dirname + '/bibliFilm.html')
+})
+
+app.get('/bibliLivreAudio', (req, res) => {
+    res.sendFile(__dirname + '/bibliLivreAudio.html')
+})
+
+app.get('/bibliMusique', (req, res) => {
+    res.sendFile(__dirname + '/bibliMusique.html')
+})
+
+app.get('/bibliPodcast', (req, res) => {
+    res.sendFile(__dirname + '/bibliPodcast.html')
+})
+
+app.get('/bibliPress', (req, res) => {
+    res.sendFile(__dirname + '/bibliPress.html')
+})
+
 
 io.on('connection', (socket) => {
 //   console.log('a user connected');
