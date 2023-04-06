@@ -1,12 +1,15 @@
 require('dotenv').config();
-const cors = require('cors');
 const express = require('express');
-
-const router = express.Router();
-
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+const cors = require('cors');
 
 const port = process.env.PORT || 3000;
+
 
 const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS.split(',');
 const corsOptions = {
@@ -20,26 +23,16 @@ const corsOptions = {
   credentials: true,
 };
 
-
-// Initialisation of the app
 app.use(cors(corsOptions));
-// add function to the app
-app.use('/', router);
 
-app.use(express.json());
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/test.html');
+});
 
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
 
-// Création des routers
-
-const home = express.Router();
-app.use('/', home);
-
-
-home.get('/', (req, res) => {
-    console.log('handling home');
-    res.send('<h1>Hello world</h1>');
-  });
-
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
+server.listen(port, () => {
+  console.log('listening on *:3000');
+});
