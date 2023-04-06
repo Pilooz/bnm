@@ -1,0 +1,28 @@
+{
+    "rfid" : {
+        "bibliDoc" : {
+            "id": "123",
+            "url": "bibliDoc"
+        },
+        "bibliFilm" : {
+            "id": "456",
+            "url": "bibliFilm"
+        },
+        "bibliLivreAudio" : {
+            "id": "789",
+            "url": "bibliLivreAudio"
+        },
+        "bibliMusique" : {
+            "id": "741",
+            "url": "bibliMusique"
+        },
+        "bibliPodcast" : {
+            "id": "852",
+            "url": "bibliPodcast"
+        },
+        "bibliPress" : {
+            "id": "963",
+            "url": "bibliPress"
+        }
+    }
+}

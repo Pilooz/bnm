@@ -53,6 +53,10 @@ app.get('/bibliPress', (req, res) => {
     res.sendFile(__dirname + '/bibliPress.html')
 })
 
+app.get('/bibliPress/:id', (req, res) => {
+    console.log(req.params.id)
+})
+
 
 io.on('connection', (socket) => {
 //   console.log('a user connected');
