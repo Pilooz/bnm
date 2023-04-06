@@ -10,6 +10,22 @@ const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 
+var { SerialPort } = require("serialport");
+
+const arduinoPort = new SerialPort({
+path: 'COM3',
+baudRate: 9600,
+dataBits: 8,
+stopBits: 1,
+parity: 'none',
+});
+
+arduinoPort.on("open", function() {
+  console.log("-- Connection opened --");
+  arduinoPort.on("data", function(data) {
+    console.log("Data received: " + data);
+  });
+});
 
 const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS.split(',');
 const corsOptions = {
