@@ -38,5 +38,11 @@
     <a class="buttonPlein" href="./select.html">Page select</a>
 
     <footer></footer>
+    <script>
+      var socket = io();
+      socket.on('redirect', function(destination) {
+          window.location.href = destination;
+      });
+  </script>
   </body>
 </html>

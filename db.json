@@ -1,27 +1,27 @@
 {
     "rfid" : {
         "bibliDoc" : {
-            "id": "123",
+            "id": "180072AA30F0",
             "url": "bibliDoc"
         },
         "bibliFilm" : {
-            "id": "456",
+            "id": "0200ABFC7E2B",
             "url": "bibliFilm"
         },
         "bibliLivreAudio" : {
-            "id": "789",
+            "id": "0200AC05258E",
             "url": "bibliLivreAudio"
         },
         "bibliMusique" : {
-            "id": "741",
+            "id": "5300C5ED6F14",
             "url": "bibliMusique"
         },
         "bibliPodcast" : {
-            "id": "852",
+            "id": "18007FB4E734",
             "url": "bibliPodcast"
         },
         "bibliPress" : {
-            "id": "963",
+            "id": "5300C5E40072",
             "url": "bibliPress"
         }
     }

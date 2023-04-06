@@ -63,7 +63,11 @@ app.get('/bibliPress', (req, res) => {
     res.sendFile(__dirname + '/bibliPress.html')
 })
 
-app.get('/bibliPress/:id', (req, res) => {
+app.get('/select', (req, res) => {
+    res.sendFile(__dirname + '/select.html')
+})
+
+app.get('/select/:id', (req, res) => {
     console.log(req.params.id)
 })
 
@@ -74,6 +78,62 @@ io.on('connection', (socket) => {
     console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
+});
+
+const db = require('./db.json');
+
+const EventEmitter = require('events').EventEmitter;
+var eventEmitter = new EventEmitter();
+
+const TAG_LENGTH = 12
+var tagRFID = ""
+
+var { SerialPort } = require("serialport");
+
+const arduinoPort = new SerialPort({
+path: '/dev/ttyACM0',
+baudRate: 9600,
+dataBits: 8,
+stopBits: 1,
+parity: 'none',
+});
+
+arduinoPort.on("open", function() {
+  console.log("-- Connection opened --");
+  arduinoPort.on("data", function(data) {
+    eventEmitter.emit('serial.data.sent', data)
+  });
+});
+
+function containsNonLatinCodepoints(s) {
+  return regex.test(s);
+}
+
+eventEmitter.on('serial.data.sent', function(dataChunk){
+  tagRFID += dataChunk
+  //console.log("Code => "+tagRFID.charCodeAt(tagRFID.length-1))
+  if (tagRFID.charCodeAt(tagRFID.length-1) == 3 || tagRFID.charCodeAt(tagRFID.length-1) == 10 ) { //'♥'
+    tagRFID = tagRFID.substring(1,tagRFID.length-1)
+    contentURL = ""
+    // Search in db.json
+    Object.entries(db['rfid']).forEach(entry => {
+      const [key, tagDB] = entry;
+      if (tagDB.id == tagRFID) {
+        contentURL = tagDB.url
+      } 
+    });
+    // Gestion d'erreur
+    if (contentURL == "") {
+      console.log("Ce tag n'est pas référencé dans db.json... tagRFID = "+tagRFID)
+    } else {
+      // 
+      // Socket to client
+      //
+      console.log("Url : "+contentURL)
+      io.emit('redirect', "/select/:"+contentURL);
+    }
+    tagRFID = ""
+  }
 });
 
 server.listen(port, () => {
