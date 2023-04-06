@@ -10,6 +10,15 @@ const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 
+
+const db = require('./db.json');
+
+const EventEmitter = require('events').EventEmitter;
+var eventEmitter = new EventEmitter();
+
+const TAG_LENGTH = 12
+var tagRFID = ""
+
 var { SerialPort } = require("serialport");
 
 const arduinoPort = new SerialPort({
@@ -23,9 +32,40 @@ parity: 'none',
 arduinoPort.on("open", function() {
   console.log("-- Connection opened --");
   arduinoPort.on("data", function(data) {
-    console.log("Data received: " + data);
+    eventEmitter.emit('serial.data.sent', data)
   });
 });
+
+function containsNonLatinCodepoints(s) {
+  return regex.test(s);
+}
+
+eventEmitter.on('serial.data.sent', function(dataChunk){
+  tagRFID += dataChunk
+  //console.log("Code => "+tagRFID.charCodeAt(tagRFID.length-1))
+  if (tagRFID.charCodeAt(tagRFID.length-1) == 3 || tagRFID.charCodeAt(tagRFID.length-1) == 10 ) { //'♥'
+    tagRFID = tagRFID.substring(1,tagRFID.length-1)
+    contentURL = ""
+    // Search in db.json
+    Object.entries(db['rfid']).forEach(entry => {
+      const [key, tagDB] = entry;
+      if (tagDB.id == tagRFID) {
+        contentURL = tagDB.url
+      } 
+    });
+    // Gestion d'erreur
+    if (contentURL == "") {
+      console.log("Ce tag n'est pas référencé dans db.json... tagRFID = "+tagRFID)
+    } else {
+      // 
+      // Socket to client
+      //
+      console.log(contentURL)
+    }
+    tagRFID = ""
+  }
+});
+
 
 const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS.split(',');
 const corsOptions = {
