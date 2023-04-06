@@ -1,0 +1,228 @@
+:root {
+  --color-blue: #011180;
+  --border-blue: rgba(1, 18, 126, 0.2);
+  --bg-blue: rgba(1, 18, 126, 0.05);
+  --sub-text-blue: rgba(1, 18, 126, 0.75);
+}
+
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+body {margin:0;}
+
+/* composant */
+.buttonPlein {
+  background-color: var(--color-blue);
+  padding: 12px 30px 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
+}
+
+.buttonVide {
+  background-color: white;
+  padding: 12px 30px 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  border: solid 2px var(--color-blue);
+  color: var(--color-blue);
+  width:auto;
+}
+
+hr {
+  color: var(--border-blue);
+  height:2px;
+  width:100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ///////////////// Landing page ////////////////*/
+
+h2 {
+  font-size: 3rem;
+  width: 60%;
+}
+
+.intro {
+  font-size: 2rem;
+}
+
+/* ///////////////// select page ////////////////*/
+
+/* ///////////////// bibliPress page ////////////////*/
+
+/* Header */
+
+header {
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--border-blue);
+  padding: 0% 3% 0% 3%;
+  margin: 0;
+}
+
+nav {
+  width: 40%;
+}
+
+.headerLeft {
+  width: 30%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.logo {
+  width: 10%;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+.navList {
+  justify-content: space-between;
+  list-style-type: none;
+  align-items:center;
+}
+
+/* main */ 
+
+main{height:100vh;}
+/* aside */
+
+aside {
+  width: 20%;
+  padding: 3% 1% 3% 1%;
+  flex-direction: column;
+  margin:0;
+  border-right: solid 2px var(--border-blue);
+}
+
+aside form {margin-top:8%;}
+
+.search {
+  justify-content: space-between;
+  background-color: var(--bg-blue);
+  padding: 7px;
+  border-radius: 15px;
+}
+
+.searcheInput {
+  background: none;
+  border: none;
+}
+
+form p {margin:2%;}
+
+.selectList {
+flex-direction: column;
+border:none;
+
+}
+
+.itemsSelectList {
+  margin-bottom:8%;
+}
+
+.itemsSelectList input {
+
+}
+
+
+
+/* section */
+
+section {
+  width: 80%;
+  background-color: pink;
+  margin: 0;
+}
+
+.container_cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 24;
+  border: solid 1px var(--border-blue);
+  width: 25%;
+}
+
+.cards_img {
+  align-self: stretch;
+  width: 100%;
+}
+
+.container_cards_content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.container_cards_content_filters {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.filters {
+  padding: 6px 16px;
+  background-color: var(--bg-blue);
+  color: var(--color-blue);
+  border-radius: 32px;
+}
+
+.container_cards_content_description-heart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.container_cards_content_description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.container_cards_content_description > h1,
+h2 {
+  margin: 0 !important;
+  width: fit-content !important;
+}
+
+.cards_content_description_title {
+  font-size: 1.5rem;
+  color: var(--color-blue);
+}
+
+.cards_content_description_author {
+  font-size: 1rem;
+  color: var(--sub-text-blue);
+}
+
+.cards_content_heart > i {
+  color: var(--color-blue);
+  font-size: 32px;
+  aspect-ratio: 1/1;
+}
+
+.container_cards_content_c2a {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+.container_cards_content_c2a_play {
+  display: flex;
+  align-items: center;
+}

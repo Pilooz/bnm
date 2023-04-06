@@ -1,0 +1,172 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- script -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+    <script src="/script.js" defer></script>
+
+    <!-- feuille de style -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+    />
+
+    <!-- titre-->
+    <title>BNM</title>
+  </head>
+
+  <body>
+
+    <header class="flex">
+      
+      <div class="headerLeft flex">
+             <img class="logo" src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/logo_bnm.svg?v=1680777322175">
+      <h3>Bibliothèque Numérique Métropolitaine</h3>
+      
+      </div>
+
+
+
+
+      <nav>
+
+        <ul class="navList flex">
+          <a><li>Catalogue</li></a>
+          <a><li>Aide</li></a>
+          <a><li>Contact</li></a>
+          <a class="buttonPlein"><li>Mon espace</li></a>
+        </ul>
+
+      </nav>
+      
+          </header>
+
+      <main class="flex">
+        
+        <aside class="flex">
+          <div class="search flex">
+        
+            <input class="searcheInput"
+              type="search"
+              id="bibli-search"
+              name="q"
+              placeholder="Science fiction..."
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+
+          <form>
+            <p>
+              Filtres
+            </p>
+            <fieldset class="selectList flex">
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="romance" name="romance" value="R" />
+              <label for="kraken">Romance</label>
+              </div>
+              
+              <div class="flex itemsSelectList">
+              <input type="radio" id="sf" name="scienceFiction" value="S" />
+              <label for="sasquatch">Science fiction</label>
+              </div>
+      
+              <div class="flex itemsSelectList">
+              <input type="radio" id="art" name="art" value="A" />
+              <label for="mothman">Art</label>
+              </div>
+              
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="BD" name="bandeDessine" value="BD" />
+              <label for="mothman">Bande dessinée</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="comedie" name="comedie" value="Co" />
+              <label for="mothman">Comédie</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="histoire" name="Histoire" value="H" />
+              <label for="mothman">Histoire</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="jeunesse" name="jeunesse" value="J" />
+              <label for="mothman">Jeunesse</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="policier" name="policier" value="P" />
+              <label for="mothman">Policier</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="thriller" name="thriller" value="T" />
+              <label for="mothman">Thriller</label>
+              </div>
+              
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="horreur" name="Horreur" value="H" />
+              <label for="mothman">Horreur</label>
+              </div>
+
+              <div class="flex itemsSelectList">
+              <input type="radio" id="action" name="act" value="Act" />
+              <label for="mothman">Action</label>
+              </div>
+
+              <hr>
+              
+              <div class="flex itemsSelectList">
+              <input type="radio" id="autre" name="autre" value="Au" />
+              <label for="mothman">Autre</label>
+              </div>
+            </fieldset>
+          </form>
+
+        </aside>
+        
+        <section>
+        <div class="container_cards">
+            <img class="cards_img" src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/film1.jpg?v=1680776700959" alt="">
+
+            <div class="container_cards_content">
+                <div class="container_cards_content_filters">
+                    <div class="filters">filtre</div>
+                    <div class="filters">filtre</div>
+                </div>
+
+                <div class="container_cards_content_description-heart">
+                    <div class="container_cards_content_description">
+                        <h1 class="cards_content_description_title">Titre</h1>
+                        <h2 class="cards_content_description_author">Auteur</h2>
+                    </div>
+                    <a class="cards_content_heart" href=""><i class="fa-regular fa-heart"></i></a>
+                </div>
+
+                <div class="container_cards_content_c2a">
+                    <a class="container_cards_content_c2a_infromations buttonVide" href="">Plus d'informations</a>
+                    <a class="container_cards_content_c2a_play buttonPlein" href=""><i class="fa-sharp fa-solid fa-play"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        </section>
+
+      </main>
+
+
+
+
+    <footer></footer>
+  </body>
+</html>
