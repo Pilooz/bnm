@@ -5,23 +5,31 @@
   SoftSerial Shield is connected to the Software UART:D2&D3
 */
 
+#include <Wire.h>
+#include <Digital_Light_TSL2561.h>
 #include <SoftwareSerial.h>
 
 SoftwareSerial SoftSerial(2, 3);
 char buffer[64];       // buffer array for data receive over serial port
 int count = 0;                    // counter for buffer array
 boolean done = false;
+boolean homesent = false;
 
 void setup()
 {
-  SoftSerial.begin(9600);     // the SoftSerial baud rate
+    Wire.begin();
+    TSL2561.init();
+    SoftSerial.begin(9600);     // the SoftSerial baud rate
   Serial.begin(9600);         // the Serial port of Arduino baud rate.
-  Serial.println("READY");
+  //Serial.println("HOME");
   done = false;
 }
 
 void loop()
 {
+// Read Light value
+  int ligthtVal = TSL2561.readVisibleLux();
+  
   // if date is coming from software serial port ==> data is coming from SoftSerial shield
   if (SoftSerial.available())
   {
@@ -31,6 +39,13 @@ void loop()
       delay(5);
     }
     done = true;
+    homesent = false;
+  } else {
+    // Pas de tag rfid
+    if (ligthtVal > 20 && !homesent) {
+      Serial.println("HOME");
+      homesent = true;
+    }
   }
 
   // Envoie du code
