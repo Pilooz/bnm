@@ -23,6 +23,32 @@ const corsOptions = {
   credentials: true,
 };
 
+//------------------------------------------------------------------------------
+// Arduino stuff
+//------------------------------------------------------------------------------
+//const arduinoPort = new SerialPort('COM3', { autoOpen: true, baudRate: 9600 });
+const { SerialPort } = require('serialport');
+const Readline = require('@serialport/parser-readline');
+const arduinoPort = new SerialPort({
+path: 'COM3',
+baudRate: 9600,
+dataBits: 8,
+stopBits: 1,
+parity: 'none',
+});
+
+const parserConf = new Readline({ delimiter: '\n' })
+const parser = arduinoPort.pipe(parserConf);// Read the port data
+
+arduinoPort.on("open", () => {
+  console.log('serial port open');
+});
+parser.on('data', data =>{
+  console.log('got word from arduino:', data);
+});
+
+//------------------------------------------------------------------------------
+
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
