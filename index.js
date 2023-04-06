@@ -60,7 +60,8 @@ eventEmitter.on('serial.data.sent', function(dataChunk){
       // 
       // Socket to client
       //
-      console.log(contentURL)
+      console.log("Url : "+contentURL)
+      io.emit('location', contentURL);
     }
     tagRFID = ""
   }
