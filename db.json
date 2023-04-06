@@ -23,6 +23,10 @@
         "bibliPress" : {
             "id": "5300C5E40072",
             "url": "bibliPress"
+        },
+        "OME" : {
+            "id": "OME\r",
+            "url": "HOME"
         }
     }
 }

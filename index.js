@@ -12,22 +12,22 @@ const cors = require('cors');
 
 const port = process.env.PORT || 3000;
 
-var { SerialPort } = require("serialport");
+// var { SerialPort } = require("serialport");
 
-const arduinoPort = new SerialPort({
-path: 'COM3',
-baudRate: 9600,
-dataBits: 8,
-stopBits: 1,
-parity: 'none',
-});
+// const arduinoPort = new SerialPort({
+// path: 'COM3',
+// baudRate: 9600,
+// dataBits: 8,
+// stopBits: 1,
+// parity: 'none',
+// });
 
-arduinoPort.on("open", function() {
-  console.log("-- Connection opened --");
-  arduinoPort.on("data", function(data) {
-    console.log("Data received: " + data);
-  });
-});
+// arduinoPort.on("open", function() {
+//   console.log("-- Connection opened --");
+//   arduinoPort.on("data", function(data) {
+//     console.log("Data received: " + data);
+//   });
+// });
 
 const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS.split(',');
 const corsOptions = {
@@ -107,7 +107,7 @@ var tagRFID = ""
 var { SerialPort } = require("serialport");
 
 const arduinoPort = new SerialPort({
-path: '/dev/ttyACM0',
+path: 'COM3', //'/dev/ttyACM0',
 baudRate: 9600,
 dataBits: 8,
 stopBits: 1,
@@ -134,6 +134,7 @@ eventEmitter.on('serial.data.sent', function(dataChunk){
     // Search in db.json
     Object.entries(db['rfid']).forEach(entry => {
       const [key, tagDB] = entry;
+      console.log(tagDB)
       if (tagDB.id == tagRFID) {
         contentURL = tagDB.url
       } 
@@ -146,7 +147,12 @@ eventEmitter.on('serial.data.sent', function(dataChunk){
       // Socket to client
       //
       console.log("Url : "+contentURL)
-      io.emit('redirect', "select#"+contentURL);
+      if (contentURL == "HOME") {
+        console.log("OME");
+        io.emit('redirect', "http://localhost:"+port+"/");
+      } else {
+        io.emit('redirect', "select#"+contentURL);
+      }
     }
     tagRFID = ""
   }
