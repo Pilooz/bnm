@@ -54,5 +54,19 @@
     </main>
 
     <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('home', function(homePath) {
+
+        window.location.href = homePath
+      });
+  </script>
+    <script src=
+    "particles.js">
+  </script>
+  <script src=
+      "app.js">
+  </script>
   </body>
 </html>

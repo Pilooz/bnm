@@ -49,5 +49,14 @@
     </main>
 
     <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('home', function(homePath) {
+
+        window.location.href = homePath
+      });
+  </script>
   </body>
 </html>

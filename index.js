@@ -107,7 +107,8 @@ var tagRFID = ""
 var { SerialPort } = require("serialport");
 
 const arduinoPort = new SerialPort({
-path: 'COM3', //'/dev/ttyACM0',
+//path: 'COM3', //'/dev/ttyACM0',
+path: '/dev/ttyACM0',
 baudRate: 9600,
 dataBits: 8,
 stopBits: 1,
@@ -149,7 +150,7 @@ eventEmitter.on('serial.data.sent', function(dataChunk){
       console.log("Url : "+contentURL)
       if (contentURL == "HOME") {
         console.log("OME");
-        io.emit('redirect', "http://localhost:"+port+"/");
+        io.emit('home', "http://localhost:"+port+"/");
       } else {
         io.emit('redirect', "select#"+contentURL);
       }

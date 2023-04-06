@@ -44,5 +44,14 @@
     </main>
 
     <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      socket.on('redirect', function(destination) {
+          console.log(destination)          
+          window.location.href = window.location.href + destination;         
+          
+      });
+  </script>
   </body>
 </html>
