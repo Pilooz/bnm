@@ -51,6 +51,14 @@ app.get('/bibliPodcast', (req, res) => {
     res.sendFile(__dirname + '/bibliPodcast.html')
 })
 
+app.get('/lecteurAudio', (req, res) => {
+    res.sendFile(__dirname + '/lecteurAudio.html')
+})
+
+app.get('/lecteurFilm', (req, res) => {
+    res.sendFile(__dirname + '/lecteurFilm.html')
+})
+
 app.get('/bibliPress', (req, res) => {
     res.sendFile(__dirname + '/bibliPress.html')
 })

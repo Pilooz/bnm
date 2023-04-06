@@ -388,3 +388,13 @@ h2 {
 iframe {  margin: auto;
 }
 
+#particles-js {
+  background-color: rgb(68, 66, 66);
+  opacity: 0.5;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
