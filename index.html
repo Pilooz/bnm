@@ -24,27 +24,25 @@
 
     
     <main>
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/PRESSE.png?v=1680799808030" id="img1" class="landing_imgs">
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/DOCU.png?v=1680799811053" id="img2" class="landing_imgs">
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/FILM_VO.png?v=1680799815845" id="img3" class="landing_imgs">
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/LIVRE_AUDIO.png?v=1680799820695" id="img4" class="landing_imgs">
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/MUSIQUE_IND%C3%89.png?v=1680799823387" id="img5" class="landing_imgs"> 
+      <img src="https://cdn.glitch.global/4654fb67-66e7-44e6-a878-dc65181d4fe2/PODCAST.png?v=1680799826445" id="img6" class="landing_imgs">
     
-      <h2>
-       Bienvenue sur la Bibliothèque Numérique Métropolitaine
-      </h2>
+      <div class="landing_title_container">
+        <h2>
+         Bienvenue sur Co Liris !
+        </h2>
       
-      <p class="intro">
-        Choisissez le type de contenu qui vous est présenté pour accéder à vos besoins. 
-      </p>
+        <p class="intro">
+          Déposez, sur le socle, le contenu que vous voulez consulter ! 
+        </p>
+      </div>
+      
     </main>
-    
-    <a class="buttonPlein" href="./bibliFilm.html">Page bibli</a>
-    <a class="buttonPlein" href="./select.html">Page select</a>
 
     <footer></footer>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-      socket.on('redirect', function(destination) {
-          console.log(destination)
-          window.location.href = window.location.href + destination;
-      });
-  </script>
   </body>
 </html>
