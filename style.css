@@ -467,3 +467,13 @@ iframe {  margin: auto;
 }
 
 
+#particles-js {
+  background-color: var(--border-blue);
+  opacity: 0.5;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
